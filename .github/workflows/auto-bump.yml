@@ -1,0 +1,35 @@
+name: Auto Patch Version Bump
+
+permissions:
+  contents: write
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  bump-version:
+    if: |
+      !contains(github.event.head_commit.message, 'Bump version')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Bump patch version
+        id: bump
+        run: |
+          NEW_VERSION=$(python scripts/bump_version.py | awk '/New version:/ {print $3}')
+          echo "version=$NEW_VERSION" >> $GITHUB_OUTPUT
+      - name: Commit version bump
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add drf_spectacular/__init__.py
+          git commit -m "Bump version to ${{ steps.bump.outputs.version }} [skip ci]"
+          git push
