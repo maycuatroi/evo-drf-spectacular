@@ -8,9 +8,9 @@ Usage:
 Default is patch bump.
 """
 
-import sys
-import re
 import os
+import re
+import sys
 
 
 def get_current_version():
