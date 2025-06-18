@@ -25,7 +25,7 @@ class Command(BaseCommand):
         The warnings serve as a indicator for where your API could not be properly
         resolved. @extend_schema and @extend_schema_field are your friends.
         The spec should be valid in any case. If not, please open an issue
-        on github: https://github.com/tfranzel/drf-spectacular/issues
+        on github: https://github.com/maycuatroi/evo-drf-spectacular/issues
 
         Remember to configure your APIs meta data like servers, version, url,
         documentation and so on in your SPECTACULAR_SETTINGS."

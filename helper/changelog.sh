@@ -10,7 +10,7 @@ echo
 
 git log ${last_ver}..origin/master --pretty=format:"- %s [%an]" --no-merges  \
     | sed 's/\[T. Franzel\]//g' \
-    | sed 's|\#\([0-9]\+\)|`#\1 <https://github.com/tfranzel/drf-spectacular/issues/\1>`_|g' \
+    | sed 's|\#\([0-9]\+\)|`#\1 <https://github.com/maycuatroi/evo-drf-spectacular/issues/\1>`_|g' \
     | sed 's/[ \t]*$//'
 
 echo

@@ -9,7 +9,7 @@ Check the :ref:`blueprints` for already available fixes. If there aren't any,
 learn how to do easy :ref:`customization`. Feel free to contribute back missing fixes.
 
 If you think this is a bug in *drf-spectacular*, open an
-`issue <https://github.com/tfranzel/drf-spectacular/issues>`_.
+`issue <https://github.com/maycuatroi/evo-drf-spectacular/issues>`_.
 
 My Swagger UI and/or Redoc page is blank
 ----------------------------------------
@@ -18,7 +18,7 @@ Chances are high that you are using `django-csp <https://django-csp.readthedocs.
 Take a look inside your browser console and confirm that you have ``Content Security Policy`` errors.
 By default, ``django-csp`` usually breaks our UIs for 2 reasons: external assets and inline scripts.
 
-Using the `sidecar <https://github.com/tfranzel/drf-spectacular#self-contained-ui-installation>`_
+Using the `sidecar <https://github.com/maycuatroi/evo-drf-spectacular#self-contained-ui-installation>`_
 will mitigate the remote asset loading violation by serving the asset from your ``self``. Alternatively,
 you can also adapt ``CSP_DEFAULT_SRC`` to allow for those CDN assets instead.
 

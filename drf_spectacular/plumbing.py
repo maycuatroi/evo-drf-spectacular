@@ -187,7 +187,7 @@ def assert_basic_serializer(serializer) -> None:
         f'internal assumption violated because we expected a basic serializer here and '
         f'instead got a "{serializer}". This may be the result of another app doing '
         f'some unexpected magic or an invalid internal call. Feel free to report this '
-        f'as a bug at https://github.com/tfranzel/drf-spectacular/issues'
+        f'as a bug at https://github.com/maycuatroi/evo-drf-spectacular/issues'
     )
 
 

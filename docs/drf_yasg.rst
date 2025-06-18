@@ -11,7 +11,7 @@ __ https://pypi.org/project/djangorestframework/
 
 .. note:: In contrast to *drf-yasg*, we don't package Redoc & Swagger UI but serve them via hyperlinked CDNs instead.
   If you want or need to serve those files yourself, you can do that with the optional
-  `drf-spectacular-sidecar <https://github.com/tfranzel/drf-spectacular-sidecar>`_ package. See
+  `drf-spectacular-sidecar <https://github.com/maycuatroi/evo-drf-spectacular-sidecar>`_ package. See
   :ref:`installation instructions <self-contained-ui-installation>` for further details.
 
 Decorators

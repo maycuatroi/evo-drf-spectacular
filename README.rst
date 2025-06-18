@@ -56,7 +56,7 @@ For more information visit the `documentation <https://evo-drf-spectacular.readt
 License
 -------
 
-Provided by `T. Franzel <https://github.com/tfranzel>`_. `Licensed under 3-Clause BSD <https://github.com/tfranzel/drf-spectacular/blob/master/LICENSE>`_.
+Provided by `T. Franzel <https://github.com/tfranzel>`_. `Licensed under 3-Clause BSD <https://github.com/maycuatroi/evo-drf-spectacular/blob/master/LICENSE>`_.
 
 Requirements
 ------------
@@ -295,10 +295,10 @@ globally, and then simply run:
 .. _3.0.3: https://spec.openapis.org/oas/v3.0.3
 .. _3.1: https://spec.openapis.org/oas/v3.1.0
 .. _tox: https://tox.wiki/
-.. _drf-spectacular-sidecar: https://github.com/tfranzel/drf-spectacular-sidecar
+.. _drf-spectacular-sidecar: https://github.com/maycuatroi/evo-drf-spectacular-sidecar
 
-.. |build-status| image:: https://github.com/tfranzel/drf-spectacular/actions/workflows/ci.yml/badge.svg
-   :target: https://github.com/tfranzel/drf-spectacular/actions/workflows/ci.yml
+.. |build-status| image:: https://github.com/maycuatroi/evo-drf-spectacular/actions/workflows/ci.yml/badge.svg
+   :target: https://github.com/maycuatroi/evo-drf-spectacular/actions/workflows/ci.yml
 .. |pypi-version| image:: https://img.shields.io/pypi/v/drf-spectacular.svg
    :target: https://pypi.org/project/drf-spectacular/
 .. |codecov| image:: https://codecov.io/gh/tfranzel/drf-spectacular/branch/master/graph/badge.svg

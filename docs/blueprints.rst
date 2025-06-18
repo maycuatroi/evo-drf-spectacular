@@ -9,8 +9,8 @@ With extensions you can manually provide the necessary information to generate a
 
 There is no blueprint for the app you are looking for? No problem, you can easily write extensions
 yourself. Take the blueprints here as examples and have a look at :ref:`customization`.
-Feel free to contribute new ones or fixes with a `PR <https://github.com/tfranzel/drf-spectacular/pulls>`_.
-Blueprint files can be found `here <https://github.com/tfranzel/drf-spectacular/tree/master/docs/blueprints>`_.
+Feel free to contribute new ones or fixes with a `PR <https://github.com/maycuatroi/evo-drf-spectacular/pulls>`_.
+Blueprint files can be found `here <https://github.com/maycuatroi/evo-drf-spectacular/tree/master/docs/blueprints>`_.
 
 .. note:: Simply copy&paste the snippets into your codebase. The extensions register
   themselves automatically. Just be sure that the python interpreter sees them at least once.

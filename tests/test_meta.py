@@ -7,15 +7,15 @@ from tests import generate_schema
 META = {
     'TITLE': 'Spectacular API',
     'DESCRIPTION': 'auto-generated spectacular schema for your API',
-    'TOS': 'https://github.com/tfranzel/drf-spectacular/blob/master/LICENSE',
+    'TOS': 'https://github.com/maycuatroi/evo-drf-spectacular/blob/master/LICENSE',
     'CONTACT': {
         "name": "API Support",
-        "url": "https://github.com/tfranzel/drf-spectacular/issues",
+        "url": "https://github.com/maycuatroi/evo-drf-spectacular/issues",
         "email": "support@example.com"
     },
     'LICENSE': {
         'name': 'BSD 3-Clause',
-        'url': 'https://github.com/tfranzel/drf-spectacular/blob/master/LICENSE',
+        'url': 'https://github.com/maycuatroi/evo-drf-spectacular/blob/master/LICENSE',
     },
     'VERSION': '1.0.0',
     'SERVERS': [

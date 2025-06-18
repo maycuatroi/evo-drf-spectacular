@@ -59,7 +59,7 @@ A quick cheat sheet to get you rolling
 With that out of the way, we hope to hear from you soon.
 
 .. _code coverage: https://app.codecov.io/gh/tfranzel/drf-spectacular
-.. _test suite: https://github.com/tfranzel/drf-spectacular/tree/master/tests
+.. _test suite: https://github.com/maycuatroi/evo-drf-spectacular/tree/master/tests
 .. _blueprints: https://evo-drf-spectacular.readthedocs.io/en/latest/blueprints.html
-.. _early feedback: https://github.com/tfranzel/drf-spectacular/issues
-.. _test_regressions.py: https://github.com/tfranzel/drf-spectacular/blob/master/tests/test_regressions.py
+.. _early feedback: https://github.com/maycuatroi/evo-drf-spectacular/issues
+.. _test_regressions.py: https://github.com/maycuatroi/evo-drf-spectacular/blob/master/tests/test_regressions.py

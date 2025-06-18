@@ -212,7 +212,7 @@ Specify authentication with :py:class:`OpenApiAuthenticationExtension <drf_spect
 
 Authentication classes that do not have 3rd party support will emit warnings and be ignored.
 Luckily authentication extensions are very easy to implement. Have a look at the
-`default authentication method extensions <https://github.com/tfranzel/drf-spectacular/blob/master/drf_spectacular/authentication.py>`_.
+`default authentication method extensions <https://github.com/maycuatroi/evo-drf-spectacular/blob/master/drf_spectacular/authentication.py>`_.
 A simple custom HTTP header based authentication could be achieved like this:
 
 .. code-block:: python
@@ -249,7 +249,7 @@ Declare serializer magic with :py:class:`OpenApiSerializerExtension <drf_spectac
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is one of the more involved extension mechanisms. *drf-spectacular* uses those to implement
-`polymorphic serializers <https://github.com/tfranzel/drf-spectacular/blob/master/drf_spectacular/serializers.py>`_.
+`polymorphic serializers <https://github.com/maycuatroi/evo-drf-spectacular/blob/master/drf_spectacular/serializers.py>`_.
 The usage of this extension is rarely necessary because most custom ``Serializer`` classes stay very
 close to the default behaviour.
 
@@ -310,5 +310,5 @@ Congratulations
 ---------------
 
 You should now have no more warnings and a spectacular schema that satisfies all your requirements.
-If that is not the case, feel free to open an `issue <https://github.com/tfranzel/drf-spectacular/issues>`_
+If that is not the case, feel free to open an `issue <https://github.com/maycuatroi/evo-drf-spectacular/issues>`_
 and make a suggestion for improvement.
