@@ -108,6 +108,6 @@ setup(
     ],
     project_urls={
         'Source': 'https://github.com/maycuatroi/evo-drf-spectacular',
-        'Documentation': 'https://drf-spectacular.readthedocs.io',
+        'Documentation': 'https://evo-drf-spectacular.readthedocs.io',
     },
 )

@@ -1071,7 +1071,7 @@ Breaking changes:
 
 Breaking changes:
 
-- Enum naming conflicts are now resolved explicitly. `how to resolve conflicts <https://drf-spectacular.readthedocs.io/en/latest/faq.html#i-get-warnings-regarding-my-enum-or-my-enum-names-have-a-weird-suffix>`_
+- Enum naming conflicts are now resolved explicitly. `how to resolve conflicts <https://evo-drf-spectacular.readthedocs.io/en/latest/faq.html#i-get-warnings-regarding-my-enum-or-my-enum-names-have-a-weird-suffix>`_
 - Choice fields may be rendered slightly different
 - Swagger UI and Redoc views now honor versioned requests
 - Contrib package code moved. each package has its own file now
