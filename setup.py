@@ -7,12 +7,12 @@ import sys
 
 from setuptools import find_namespace_packages, setup
 
-name = 'drf-spectacular'
+name = 'evo-drf-spectacular'
 package = 'drf_spectacular'
 description = 'Sane and flexible OpenAPI 3 schema generation for Django REST framework'
-url = 'https://github.com/tfranzel/drf-spectacular'
-author = 'T. Franzel'
-author_email = 'tfranzel@gmail.com'
+url = 'https://github.com/maycuatroi/evo-drf-spectacular'
+author = 'Anh Binh Nguyen'
+author_email = 'socrat.nguyenanhbinh@gmail.com'
 license = 'BSD'
 
 with open('README.rst') as readme:
@@ -107,7 +107,7 @@ setup(
         'Topic :: Software Development :: Code Generators',
     ],
     project_urls={
-        'Source': 'https://github.com/tfranzel/drf-spectacular',
+        'Source': 'https://github.com/maycuatroi/evo-drf-spectacular',
         'Documentation': 'https://drf-spectacular.readthedocs.io',
     },
 )
