@@ -1,4 +1,6 @@
 name: Auto Patch Version Bump
+permissions:
+  contents: write
 
 on:
   push:
@@ -7,6 +9,8 @@ on:
 
 jobs:
   bump-version:
+    permissions:
+      contents: write
     if: |
       !contains(github.event.head_commit.message, 'Bump version')
     runs-on: ubuntu-latest
