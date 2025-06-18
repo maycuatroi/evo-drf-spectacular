@@ -72,7 +72,7 @@ Install using ``pip``\ ...
 
 .. code:: bash
 
-    $ pip install drf-spectacular
+    $ pip install evo-drf-spectacular
 
 then add drf-spectacular to installed apps in ``settings.py``
 
