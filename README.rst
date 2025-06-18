@@ -17,14 +17,14 @@ which is/was lacking all of the below listed features.
 
 Features
     - Serializers modelled as components. (arbitrary nesting and recursion supported)
-    - `@extend_schema <https://drf-spectacular.readthedocs.io/en/latest/drf_spectacular.html#drf_spectacular.utils.extend_schema>`_ decorator for customization of APIView, Viewsets, function-based views, and ``@action``
+    - `@extend_schema <https://evo-drf-spectacular.readthedocs.io/en/latest/drf_spectacular.html#drf_spectacular.utils.extend_schema>`_ decorator for customization of APIView, Viewsets, function-based views, and ``@action``
         - additional parameters
         - request/response serializer override (with status codes)
         - polymorphic responses either manually with ``PolymorphicProxySerializer`` helper or via ``rest_polymorphic``'s PolymorphicSerializer)
         - ... and more customization options
     - Authentication support (DRF natives included, easily extendable)
     - Custom serializer class support (easily extendable)
-    - `SerializerMethodField() <https://drf-spectacular.readthedocs.io/en/latest/customization.html#step-3-extend-schema-field-and-type-hints>`_ type via type hinting or ``@extend_schema_field``
+    - `SerializerMethodField() <https://evo-drf-spectacular.readthedocs.io/en/latest/customization.html#step-3-extend-schema-field-and-type-hints>`_ type via type hinting or ``@extend_schema_field``
     - i18n support
     - Tags extraction
     - Request/response/parameter examples
@@ -51,7 +51,7 @@ Features
         - `Pydantic (>=2.0) <https://github.com/pydantic/pydantic>`_
 
 
-For more information visit the `documentation <https://drf-spectacular.readthedocs.io/>`_.
+For more information visit the `documentation <https://evo-drf-spectacular.readthedocs.io/>`_.
 
 License
 -------
@@ -93,7 +93,7 @@ and finally register our spectacular AutoSchema with DRF.
         'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     }
 
-drf-spectacular ships with sane `default settings <https://drf-spectacular.readthedocs.io/en/latest/settings.html>`_
+drf-spectacular ships with sane `default settings <https://evo-drf-spectacular.readthedocs.io/en/latest/settings.html>`_
 that should work reasonably well out of the box. It is not necessary to
 specify any settings, but we recommend to specify at least some metadata.
 
@@ -180,7 +180,7 @@ Usage
 
 *drf-spectacular* works pretty well out of the box. You might also want to set some metadata for your API.
 Just create a ``SPECTACULAR_SETTINGS`` dictionary in your ``settings.py`` and override the defaults.
-Have a look at the `available settings <https://drf-spectacular.readthedocs.io/en/latest/settings.html>`_.
+Have a look at the `available settings <https://evo-drf-spectacular.readthedocs.io/en/latest/settings.html>`_.
 
 The toy examples do not cover your cases? No problem, you can heavily customize how your schema will be rendered.
 
@@ -264,7 +264,7 @@ More customization
 ^^^^^^^^^^^^^^^^^^
 
 Still not satisfied? You want more! We still got you covered.
-Visit `customization <https://drf-spectacular.readthedocs.io/en/latest/customization.html>`_ for more information.
+Visit `customization <https://evo-drf-spectacular.readthedocs.io/en/latest/customization.html>`_ for more information.
 
 
 Testing
@@ -304,6 +304,6 @@ globally, and then simply run:
 .. |codecov| image:: https://codecov.io/gh/tfranzel/drf-spectacular/branch/master/graph/badge.svg
    :target: https://codecov.io/gh/tfranzel/drf-spectacular
 .. |docs| image:: https://readthedocs.org/projects/drf-spectacular/badge/
-   :target: https://drf-spectacular.readthedocs.io/
+   :target: https://evo-drf-spectacular.readthedocs.io/
 .. |pypi-dl| image:: https://img.shields.io/pypi/dm/drf-spectacular
    :target: https://pypi.org/project/drf-spectacular/
