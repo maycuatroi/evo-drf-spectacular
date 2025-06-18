@@ -1,0 +1,169 @@
+name: Auto Release Advanced
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+    branches:
+      - master
+  workflow_dispatch:
+    inputs:
+      version_bump:
+        description: 'Version bump type (patch, minor, major)'
+        required: false
+        default: 'patch'
+        type: choice
+        options:
+          - patch
+          - minor
+          - major
+
+jobs:
+  auto-bump-and-release:
+    if: |
+      (github.event_name == 'workflow_dispatch') ||
+      (github.event.workflow_run.conclusion == 'success' && 
+       github.event.workflow_run.head_branch == 'master' &&
+       !contains(github.event.workflow_run.head_commit.message, '[skip release]') &&
+       !contains(github.event.workflow_run.head_commit.message, '[skip ci]'))
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      
+      - name: Configure Git
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+      
+      - name: Get current version
+        id: get_version
+        run: |
+          CURRENT_VERSION=$(python -c "import re; content = open('drf_spectacular/__init__.py').read(); print(re.search(r'__version__ = ['\"]([^'\"]+)['\"]', content).group(1))")
+          echo "current_version=$CURRENT_VERSION" >> $GITHUB_OUTPUT
+          echo "Current version: $CURRENT_VERSION"
+      
+      - name: Determine version bump type
+        id: determine_bump
+        run: |
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ]; then
+            BUMP_TYPE="${{ github.event.inputs.version_bump }}"
+          else
+            # Default to patch for automated runs
+            BUMP_TYPE="patch"
+            # You can add logic here to determine bump type from commit messages
+            # For example, look for [minor] or [major] in commit messages
+            LAST_COMMIT="${{ github.event.workflow_run.head_commit.message }}"
+            if [[ "$LAST_COMMIT" == *"[major]"* ]]; then
+              BUMP_TYPE="major"
+            elif [[ "$LAST_COMMIT" == *"[minor]"* ]]; then
+              BUMP_TYPE="minor"
+            fi
+          fi
+          echo "bump_type=$BUMP_TYPE" >> $GITHUB_OUTPUT
+          echo "Bump type: $BUMP_TYPE"
+      
+      - name: Calculate new version
+        id: bump_version
+        run: |
+          CURRENT_VERSION="${{ steps.get_version.outputs.current_version }}"
+          BUMP_TYPE="${{ steps.determine_bump.outputs.bump_type }}"
+          
+          # Split version into major.minor.patch
+          IFS='.' read -r major minor patch <<< "$CURRENT_VERSION"
+          
+          # Increment based on bump type
+          case $BUMP_TYPE in
+            major)
+              NEW_VERSION="$((major + 1)).0.0"
+              ;;
+            minor)
+              NEW_VERSION="$major.$((minor + 1)).0"
+              ;;
+            patch)
+              NEW_VERSION="$major.$minor.$((patch + 1))"
+              ;;
+          esac
+          
+          echo "new_version=$NEW_VERSION" >> $GITHUB_OUTPUT
+          echo "New version: $NEW_VERSION"
+      
+      - name: Check if version already exists
+        id: check_tag
+        run: |
+          NEW_VERSION="${{ steps.bump_version.outputs.new_version }}"
+          if git rev-parse "$NEW_VERSION" >/dev/null 2>&1; then
+            echo "Version $NEW_VERSION already exists as a tag"
+            echo "tag_exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "Version $NEW_VERSION does not exist"
+            echo "tag_exists=false" >> $GITHUB_OUTPUT
+          fi
+      
+      - name: Generate changelog for PR body
+        if: steps.check_tag.outputs.tag_exists == 'false'
+        id: changelog
+        run: |
+          # Get commits since last tag
+          LAST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
+          if [ -z "$LAST_TAG" ]; then
+            COMMITS=$(git log --pretty=format:"- %s" -10)
+          else
+            COMMITS=$(git log "$LAST_TAG"..HEAD --pretty=format:"- %s")
+          fi
+          
+          # Write to file to handle multiline
+          cat > changelog.txt << EOF
+          ## Changes in this release:
+          
+          $COMMITS
+          EOF
+          
+          echo "changelog<<EOF" >> $GITHUB_OUTPUT
+          cat changelog.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+      
+      - name: Update version in __init__.py
+        if: steps.check_tag.outputs.tag_exists == 'false'
+        run: |
+          NEW_VERSION="${{ steps.bump_version.outputs.new_version }}"
+          sed -i "s/__version__ = .*/__version__ = '$NEW_VERSION'/" drf_spectacular/__init__.py
+      
+      - name: Commit version bump
+        if: steps.check_tag.outputs.tag_exists == 'false'
+        run: |
+          NEW_VERSION="${{ steps.bump_version.outputs.new_version }}"
+          git add drf_spectacular/__init__.py
+          git commit -m "Bump version to $NEW_VERSION [skip ci]"
+      
+      - name: Push changes
+        if: steps.check_tag.outputs.tag_exists == 'false'
+        run: |
+          git push origin master
+      
+      - name: Create and push tag
+        if: steps.check_tag.outputs.tag_exists == 'false'
+        run: |
+          NEW_VERSION="${{ steps.bump_version.outputs.new_version }}"
+          git tag -a "$NEW_VERSION" -m "Release version $NEW_VERSION"
+          git push origin "$NEW_VERSION"
+      
+      - name: Create Release Notes
+        if: steps.check_tag.outputs.tag_exists == 'false'
+        run: |
+          echo "🎉 Version ${{ steps.bump_version.outputs.new_version }} has been released!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "${{ steps.changelog.outputs.changelog }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "The release workflow will be triggered automatically to publish to PyPI." >> $GITHUB_STEP_SUMMARY
